@@ -1,14 +1,14 @@
 import React, {useState} from "react"
 
-function NewTodoForm(props){
+export const NewTodoForm: React.FC<{addTodo: Function}> = (props) => {
 
     const [description, setDescription] = useState('');
     const [assigned, setAssigned] = useState('');
 
-    const descriptionChange = (event) => {
-        //console.log('Description', event.target.value);
-        setDescription(event.target.value);
-    }
+    // const descriptionChange = (event) => {
+    //     //console.log('Description', event.target.value);
+    //     setDescription(event.target.value);
+    // }
 
     const submitTodo = () => {
         if (description !== ''  && assigned !== '') {
@@ -43,7 +43,7 @@ function NewTodoForm(props){
                         className="form-control" 
                         rows={3} 
                         required
-                        onChange={descriptionChange}
+                        onChange={e => setDescription(e.target.value)}
                         value={description}
                         ></textarea>
                 </div>
@@ -58,4 +58,3 @@ function NewTodoForm(props){
     )
 }
 
-export default NewTodoForm
